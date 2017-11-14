@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yihe.springcloud.consul.consumer.demo.dao.IUserMapper">
+
+    <resultMap id="BaseResultMap" type="com.forezp.model.User">
+        <id column="userId" property="userId" jdbcType="BIGINT"/>
+        <result column="userName" property="userName" jdbcType="VARCHAR"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+
+    </resultMap>
+    <select id="getUserId" parameterType="BaseResultMap">
+        SELECT  * FROM  USER   where userId = #{userId,jdbcType=BIGINT}
+    </select>
+
+    <insert id="insert" parameterType="BaseResultMap" useGeneratedKeys="true" keyProperty="userId">
+        insert into user (userId, userName, age      )
+    values (#{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}      )
+    </insert>
+</mapper>
